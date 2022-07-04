@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "husky":{
+    "hooks": {
+        "pre-commit": "lint-staged"
+    }
+  },
   "scripts": {
     "test": "jest  --passWithNoTests",
     "test:staged": "jest --passWithNoTests"
