@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "lint-staged": {
+    "*.ts": [
+        "eslint 'src/**' --fix",
+        "npm run test:staged",
+        "git add"
+    ]
+  },
   "husky":{
     "hooks": {
         "pre-commit": "lint-staged"
     }
   },
   "scripts": {
-    "test": "jest  --passWithNoTests",
+    "test": "jest --passWithNoTests",
     "test:staged": "jest --passWithNoTests"
   },
   "keywords": [],
