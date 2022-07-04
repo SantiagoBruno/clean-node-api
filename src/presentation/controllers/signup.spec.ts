@@ -4,19 +4,28 @@ import { EmailValidator } from '../protocols/email-validator'
 import { MissingParamError } from '../errors/missing-param-error'
 import { InvalidParamError } from '../errors/invalid-param-error'
 
-const makeSut = (): SignUpController => {
+interface Sut {
+  sut: SignUpController
+  emailValidatorStub: EmailValidator
+}
+
+const makeSut = (): Sut => {
   class EmailValidatorStub implements EmailValidator {
     isValid (email: string): boolean {
-      return false
+      return true
     }
   }
   const emailValidatorStub = new EmailValidatorStub()
-  return new SignUpController(emailValidatorStub)
+  const sut = new SignUpController(emailValidatorStub)
+  return {
+    sut,
+    emailValidatorStub
+  }
 }
 
 describe('Signup Controller', () => {
   test('Shoud return 400 if no name is provided', () => {
-    const sut = makeSut()
+    const { sut } = makeSut()
     const httpRequest: HttpRequest = {
       body: {
         email: 'any_email@mail.com',
@@ -30,7 +39,7 @@ describe('Signup Controller', () => {
   })
 
   test('Shoud return 400 if no email is provided', () => {
-    const sut = makeSut()
+    const { sut } = makeSut()
     const httpRequest: HttpRequest = {
       body: {
         name: 'any_name',
@@ -44,7 +53,7 @@ describe('Signup Controller', () => {
   })
 
   test('Shoud return 400 if no password is provided', () => {
-    const sut = makeSut()
+    const { sut } = makeSut()
     const httpRequest: HttpRequest = {
       body: {
         name: 'any_name',
@@ -58,7 +67,7 @@ describe('Signup Controller', () => {
   })
 
   test('Shoud return 400 if no password confirmation is provided', () => {
-    const sut = makeSut()
+    const { sut } = makeSut()
     const httpRequest: HttpRequest = {
       body: {
         name: 'any_name',
@@ -72,7 +81,8 @@ describe('Signup Controller', () => {
   })
 
   test('Shoud return 400 if an invalid email is provided', () => {
-    const sut = makeSut()
+    const { sut, emailValidatorStub } = makeSut()
+    jest.spyOn(emailValidatorStub, 'isValid').mockReturnValueOnce(false)
     const httpRequest: HttpRequest = {
       body: {
         name: 'any_name',
