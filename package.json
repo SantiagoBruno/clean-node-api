@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
-    "test:verbose": "jest --passWithNoTests --runInBand",
+    "test:verbose": "jest --passWithNoTests --runInBand --detectOpenHandles",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
-    "test:staged": "jest --passWithNoTests --runInBand --findRelatedTests",
+    "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage"
   },
   "keywords": [],
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
-    "mongodb": "4.8.0",
+    "mongodb": "^4.8.0",
     "validator": "^13.7.0"
   }
 }
