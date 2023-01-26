@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "sudo systemctl start mongod \nsucrase-node src/main/server.ts",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test": "jest --passWithNoTests  --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand --detectOpenHandles",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integration-config.js",
