@@ -9,10 +9,10 @@ import {
 } from './db-authentication-protocols'
 
 export class DbAuthentication implements Authentication {
-  private readonly loadAcountByEmailRepository
-  private readonly hashCompare
-  private readonly tokenGenerator
-  private readonly updateAccessTokenRepository
+  private readonly loadAcountByEmailRepository: LoadAccountByEmailRepository
+  private readonly hashCompare: HashCompare
+  private readonly tokenGenerator: TokenGenerator
+  private readonly updateAccessTokenRepository: UpdateAccessTokenRepository
 
   constructor (
     loadAcountByEmailRepository: LoadAccountByEmailRepository,
