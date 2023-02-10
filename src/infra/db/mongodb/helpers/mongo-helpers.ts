@@ -19,11 +19,13 @@ export const MongoHelper = {
     return this.client.db().collection(name)
   },
   mapAccount (account: any): AccountModel {
-    return {
-      id: account._id.toHexString(),
-      name: account?.name,
-      email: account?.email,
-      password: account?.password
+    if (account) {
+      return {
+        id: account._id.toHexString(),
+        name: account?.name,
+        email: account?.email,
+        password: account?.password
+      }
     }
   }
 }
