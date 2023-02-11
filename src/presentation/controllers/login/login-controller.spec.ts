@@ -4,8 +4,8 @@ import {
   Authentication,
   AuthenticationModel,
   Validation
-} from './login-protocols'
-import { LoginController } from './login'
+} from './login-controller-protocols'
+import { LoginController } from './login-controller'
 import { ok, badRequest, serverError, unauthorized } from '../../helpers/http/http-helper'
 import { MissingParamError, ServerError } from '../../errors'
 
