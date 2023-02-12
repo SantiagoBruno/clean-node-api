@@ -35,7 +35,7 @@ describe('Login Routes', () => {
   })
 
   describe('POST/login', () => {
-    test('Should return 200 on login success', async () => {
+    test('Should return 200 on login', async () => {
       const password = await bcrypt.hash('valid_password', 12)
       await accountCollection.insertOne({
         name: 'valid_name',
@@ -49,6 +49,16 @@ describe('Login Routes', () => {
           password: 'valid_password'
         })
         .expect(200)
+    })
+
+    test('Should return 401 on login', async () => {
+      await request(app)
+        .post('/api/login')
+        .send({
+          email: 'valid_email@email.com',
+          password: 'valid_password'
+        })
+        .expect(401)
     })
   })
 })
