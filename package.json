@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "sudo systemctl start mongod \nsucrase-node src/main/server.ts",
+    "start": "node dist/main/server.js",
+    "build": "rimraf dist && tsc",
+    "dev": "sudo systemctl start mongod && sucrase-node src/main/server.ts",
     "test": "jest --passWithNoTests  --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand --detectOpenHandles",
     "test:unit": "npm test -- --watch -c jest-unit-config.js",
@@ -35,6 +37,7 @@
     "husky": "^4.3.8",
     "jest": "^28.1.3",
     "lint-staged": "^13.0.3",
+    "rimraf": "^4.1.2",
     "sucrase": "^3.24.0",
     "supertest": "^6.2.4",
     "ts-jest": "^28.0.5",
@@ -44,7 +47,6 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.18.1",
-    "fast-glob": "^3.2.11",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^4.8.0",
     "validator": "^13.7.0"
