@@ -16,7 +16,7 @@ services:
     command: "npm start"
     volumes: 
       - ./dist:/usr/src/clean-node-api/dist
-    port: 
+    ports: 
       - "5050:5050"
     links:
       - mongo
