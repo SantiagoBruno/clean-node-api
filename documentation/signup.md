@@ -1,4 +1,4 @@
-# Cadastro 
+# SignUp 
 
 ## Casos sucesso:
 1. :heavy_check_mark: Recebe uma requisição do tipo POST na rota /api/signup
