@@ -2,5 +2,5 @@
 
 
 ## APIs previstas
-[SignUp](./documentation/signUp.md)
+[SignUp](./documentation/signup.md)
 [Login](./documentation/login.md)

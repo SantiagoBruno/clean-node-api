@@ -1,6 +1,6 @@
 # SignUp 
 
-## Casos sucesso:
+## Casos de sucesso:
 1. :heavy_check_mark: Recebe uma requisição do tipo POST na rota /api/signup
 2. :heavy_check_mark: Valida dados obrigatórios **name**, **email**, **password**, e **passwordConfirmation**
 3. :heavy_check_mark: Valida que **password** e **passwordConfirmation** são iguais
