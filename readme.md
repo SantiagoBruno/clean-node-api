@@ -2,4 +2,4 @@
 
 
 ## APIs previstas
-[Cadastro](documentation/login)
+[Cadastro](documentation/login.md)
