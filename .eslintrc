@@ -1,0 +1,13 @@
+{
+    "extends": "standard-with-typescript",
+    "parserOptions": {
+        "project": "./tsconfig.eslint.json"
+    },
+    "plugins": [
+        "strict-null-checks"    
+    ],
+    "rules": {
+        "@typescript-eslint/strict-boolean-expressions": "off",
+        "strict-null-checks/all": "off"
+    }
+}
