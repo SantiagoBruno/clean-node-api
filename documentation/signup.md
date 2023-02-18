@@ -19,7 +19,7 @@
 1. :heavy_check_mark: Retorna erro 400 se **name**, **email**, **password**, e **passwordConfirmation** não forem fornecidos pelo client
 1. :heavy_check_mark: Retorna erro 400 se **password** e **passwordConfirmation** não forem iguais
 1. :heavy_check_mark: Retorna erro 400 se o campo **email** for um email inválido
-1. :heavy_multiplication_x: Retorna erro 403 se o email fornecido já estiver em uso 
+1. :heavy_check_mark: Retorna erro 403 se o email fornecido já estiver em uso 
 1. :heavy_check_mark: Retorna erro 500 se der erro ao tentar gerar uma senha criptografada
 1. :heavy_check_mark: Retorna erro 500 se der erro ao tentar criar a conta do usuário
 1. :heavy_check_mark: Retorna erro 500 se der erro ao tentar gerar o token de acesso
