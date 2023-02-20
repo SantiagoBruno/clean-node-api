@@ -5,7 +5,7 @@
 1. :heavy_check_mark: Valida dados obrigatórios **name**, **email**, **password**, e **passwordConfirmation**
 1. :heavy_check_mark: Valida que **password** e **passwordConfirmation** são iguais
 1. :heavy_check_mark: Valida que o campo **email** é um email válido
-1. :heavy_multiplication_x: Valida se já existe um usuário com o email fornecido
+1. :heavy_check_mark: Valida se já existe um usuário com o email fornecido
 1. :heavy_check_mark: Gera uma senha criptografada (Essa senha não pode ser descriptografada)
 1. :heavy_check_mark: Cria uma conta para o usuário com os dados informados, substituindo a senha para senha criptografada 
 1. :heavy_check_mark: Gera um token de acesso a partir do ID do usuário 
