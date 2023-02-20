@@ -6,8 +6,8 @@ import {
   Validation
 } from './login-controller-protocols'
 import { LoginController } from './login-controller'
-import { ok, badRequest, serverError, unauthorized } from '../../helpers/http/http-helper'
-import { MissingParamError, ServerError } from '../../errors'
+import { ok, badRequest, serverError, unauthorized } from '../../../helpers/http/http-helper'
+import { MissingParamError, ServerError } from '../../../errors'
 
 interface sutTypes {
   sut: LoginController
