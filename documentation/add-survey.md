@@ -5,7 +5,7 @@
 1. :heavy_multiplication_x: Valida se a requisição foi feita por um admin 
 1. :heavy_multiplication_x: Valida dados obrigatórios: **question** e **answers**
 1. :heavy_multiplication_x: Cria uma enquete com os dados fornecidos 
-1. :heavy_multiplication_x: Retorna 200 com os dados da enquete 
+1. :heavy_multiplication_x: Retorna 204 
 
 ## Exceções 
 1. :heavy_multiplication_x: Retorna erro 404 se a API não existir
