@@ -1,4 +1,4 @@
-import { DbAuthentication } from './authentication'
+import { Authentication } from './authentication'
 import {
   AccountModel,
   LoadAccountByEmailRepository,
@@ -9,7 +9,7 @@ import {
 import { AuthenticationModel } from './authentication-interface'
 
 interface SutTypes {
-  sut: DbAuthentication
+  sut: Authentication
   loadAcountByEmailRepositoryStub: LoadAccountByEmailRepository
   hashCompareStub: HashCompare
   encrypterStub: Encrypter
@@ -68,7 +68,7 @@ const makeSut = (): SutTypes => {
   const hashCompareStub = makeHashCompare()
   const encrypterStub = makeEncrypterStub()
   const updateAccessTokenRepositoryStub = makeUpdateAccessTokenRepositoryStub()
-  const sut = new DbAuthentication(
+  const sut = new Authentication(
     loadAcountByEmailRepositoryStub,
     hashCompareStub,
     encrypterStub,
