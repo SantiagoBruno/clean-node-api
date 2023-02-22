@@ -1,2 +1,2 @@
 export * from '../../../protocols'
-export * from '../../../../domain/usecases/add-survey'
+export * from '../../../../usecases/survey/add-survey/add-survey-interface'
