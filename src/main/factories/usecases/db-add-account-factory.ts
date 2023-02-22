@@ -1,11 +1,10 @@
-import { DbAddAccount } from '../../../data/usecases/add-account/db-add-account'
+import { AddAccount } from '../../../usecases/user-control/add-account/add-account'
 import { BcryptAdapter } from '../../../infra/criptography/bcrypt-adapter/bcrypt-adapter'
 import { AccountMongoRepository } from '../../../infra/db/mongodb/account/account-mongo-repository'
-import { AddAccount } from '../../../domain/usecases/add-account'
 
 export const makeAddAccount = (): AddAccount => {
   const accountMongoRepository: AccountMongoRepository = new AccountMongoRepository()
   const salt = 12
   const bcryptAdapter = new BcryptAdapter(salt)
-  return new DbAddAccount(bcryptAdapter, accountMongoRepository, accountMongoRepository)
+  return new AddAccount(bcryptAdapter, accountMongoRepository, accountMongoRepository)
 }

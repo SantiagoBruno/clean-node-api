@@ -5,7 +5,7 @@ import {
   AuthenticationModel,
   HttpResponse,
   HttpRequest,
-  AddAccount,
+  AddAccountInteface,
   Authentication,
   Validation
 } from './signup-controller-protocols'
@@ -14,13 +14,13 @@ import { ok, serverError, badRequest, forbidden } from '../../../helpers/http/ht
 
 interface Sut {
   sut: SignUpController
-  addAccountStub: AddAccount
+  addAccountStub: AddAccountInteface
   validationStub: Validation
   authenticationStub: Authentication
 }
 
-const makeAddAccount = (): AddAccount => {
-  class AddAccountStub implements AddAccount {
+const makeAddAccount = (): AddAccountInteface => {
+  class AddAccountStub implements AddAccountInteface {
     async add (account: AddAccountModel): Promise<AccountModel> {
       return await new Promise(resolve => resolve(makeFakeAccount()))
     }

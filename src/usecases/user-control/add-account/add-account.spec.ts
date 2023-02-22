@@ -1,14 +1,14 @@
-import { DbAddAccount } from './db-add-account'
+import { AddAccountModel } from './add-account-interface'
+import { AddAccount } from './add-account'
 import {
   AccountModel,
-  AddAccountModel,
   Hasher,
   AddAccountRepository,
   LoadAccountByEmailRepository
-} from './db-add-account-protocols'
+} from './add-account-protocols'
 
 interface SutTypes {
-  sut: DbAddAccount
+  sut: AddAccount
   hasherStub: Hasher
   addAccountRepositoryStub: AddAccountRepository
   loadAcountByEmailRepositoryStub: LoadAccountByEmailRepository
@@ -35,7 +35,7 @@ const makeAddAccountRepository = (): AddAccountRepository => {
 
 const makeLoadAccountByEmailRepository = (): LoadAccountByEmailRepository => {
   class LoadAccountByEmailRepositoryStub implements LoadAccountByEmailRepository {
-    async loadByEmail (email: string): Promise<AccountModel> {
+    async loadByEmail (email: string): Promise<AccountModel | null> {
       return await new Promise(resolve => resolve(null))
     }
   }
@@ -59,7 +59,7 @@ const makeSut = (): SutTypes => {
   const hasherStub = makeHasher()
   const addAccountRepositoryStub = makeAddAccountRepository()
   const loadAcountByEmailRepositoryStub = makeLoadAccountByEmailRepository()
-  const sut = new DbAddAccount(hasherStub, addAccountRepositoryStub, loadAcountByEmailRepositoryStub)
+  const sut = new AddAccount(hasherStub, addAccountRepositoryStub, loadAcountByEmailRepositoryStub)
   return {
     sut,
     hasherStub,
