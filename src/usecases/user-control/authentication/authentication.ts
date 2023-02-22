@@ -10,7 +10,7 @@ import {
   AuthenticationModel
 } from './authentication-interface'
 
-export class DbAuthentication implements AuthenticationInterface {
+export class Authentication implements AuthenticationInterface {
   constructor (
     private readonly loadAcountByEmailRepository: LoadAccountByEmailRepository,
     private readonly hashCompare: HashCompare,
