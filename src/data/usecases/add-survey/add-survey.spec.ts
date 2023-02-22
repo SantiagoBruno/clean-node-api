@@ -4,6 +4,11 @@ import {
 } from './add-survey-protocols'
 import { DbAddSurvey } from './add-survey'
 
+interface sutTypes {
+  sut: DbAddSurvey
+  addSurveyRepositoryStub: AddSurveyRepository
+}
+
 const makeFakeSurveyData = (): AddSurveyModel => ({
   question: 'any_question',
   answers: [{
@@ -21,10 +26,18 @@ const makeAddSurveyRepositoryStub = (): AddSurveyRepository => {
   return new AddSurveyRepositoryStub()
 }
 
-describe('SbAddSurvey Usecase', () => {
+const makeSut = (): sutTypes => {
+  const addSurveyRepositoryStub = makeAddSurveyRepositoryStub()
+  const sut = new DbAddSurvey(addSurveyRepositoryStub)
+  return {
+    sut,
+    addSurveyRepositoryStub
+  }
+}
+
+describe('AddSurvey Usecase', () => {
   test('Should call repository AddSurveyRepository with correct values', async () => {
-    const addSurveyRepositoryStub = makeAddSurveyRepositoryStub()
-    const sut = new DbAddSurvey(addSurveyRepositoryStub)
+    const { sut, addSurveyRepositoryStub } = makeSut()
     const addSpy = jest.spyOn(addSurveyRepositoryStub, 'add')
     await sut.add(makeFakeSurveyData())
     expect(addSpy).toHaveBeenCalledWith(makeFakeSurveyData())
