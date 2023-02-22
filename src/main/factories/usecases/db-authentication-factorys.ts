@@ -3,9 +3,9 @@ import { AccountMongoRepository } from '../../../infra/db/mongodb/account/accoun
 import { BcryptAdapter } from '../../../infra/criptography/bcrypt-adapter/bcrypt-adapter'
 import { JwtAdapter } from '../../../infra/criptography/jwt-adapter/jwt-adapter'
 import { DbAuthentication } from '../../../usecases/user-control/authentication/authentication'
-import { Authentication } from '../../../domain/usecases/authentication'
+import { AuthenticationInterface } from '../../../usecases/user-control/authentication/authentication-interface'
 
-export const makeDbAuthentication = (): Authentication => {
+export const makeDbAuthentication = (): AuthenticationInterface => {
   const accountMongoRepository = new AccountMongoRepository()
   const salt = 12
   const bcryptAdapter: BcryptAdapter = new BcryptAdapter(salt)

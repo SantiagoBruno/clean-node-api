@@ -5,8 +5,8 @@ import {
   AuthenticationModel,
   HttpResponse,
   HttpRequest,
-  AddAccount,
-  Authentication,
+  AddAccountInteface,
+  AuthenticationInterface,
   Validation
 } from './signup-controller-protocols'
 import { MissingParamError, ServerError, EmailInUseError } from '../../../errors'
@@ -14,13 +14,13 @@ import { ok, serverError, badRequest, forbidden } from '../../../helpers/http/ht
 
 interface Sut {
   sut: SignUpController
-  addAccountStub: AddAccount
+  addAccountStub: AddAccountInteface
   validationStub: Validation
-  authenticationStub: Authentication
+  authenticationStub: AuthenticationInterface
 }
 
-const makeAddAccount = (): AddAccount => {
-  class AddAccountStub implements AddAccount {
+const makeAddAccount = (): AddAccountInteface => {
+  class AddAccountStub implements AddAccountInteface {
     async add (account: AddAccountModel): Promise<AccountModel> {
       return await new Promise(resolve => resolve(makeFakeAccount()))
     }
@@ -39,8 +39,8 @@ const makeValidation = (): Validation => {
   return validationStub
 }
 
-const makeAuthentication = (): Authentication => {
-  class AuthenticationStub implements Authentication {
+const makeAuthentication = (): AuthenticationInterface => {
+  class AuthenticationStub implements AuthenticationInterface {
     async auth (authentication: AuthenticationModel): Promise<string> {
       return await new Promise(resolve => resolve('any_token'))
     }

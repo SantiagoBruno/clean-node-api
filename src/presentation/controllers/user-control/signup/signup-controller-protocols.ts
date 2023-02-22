@@ -1,4 +1,5 @@
 export * from '../../../protocols'
+export * from '../../../../usecases/user-control/add-account/add-account'
+export * from '../../../../usecases/user-control/add-account/add-account-interface'
 export * from '../../../../domain/models/account'
-export * from '../../../../domain/usecases/add-account'
-export * from '../../../../domain/usecases/authentication'
+export * from '../../../../usecases/user-control/authentication/authentication-interface'
