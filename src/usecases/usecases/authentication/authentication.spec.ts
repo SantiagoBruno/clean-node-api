@@ -1,4 +1,4 @@
-import { DbAuthentication } from './db-authentication'
+import { DbAuthentication } from './authentication'
 import {
   AccountModel,
   AuthenticationModel,
@@ -6,7 +6,7 @@ import {
   UpdateAccessTokenRepository,
   HashCompare,
   Encrypter
-} from './db-authentication-protocols'
+} from './authentication-protocols'
 
 interface SutTypes {
   sut: DbAuthentication
