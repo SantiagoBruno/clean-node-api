@@ -1,5 +1,5 @@
 import {
-  AddSurvey,
+  AddSurveyInterface,
   Controller,
   HttpRequest,
   HttpResponse,
@@ -10,7 +10,7 @@ import { badRequest, noContent, serverError } from '../../../helpers/http/http-h
 export class AddSurveyController implements Controller {
   constructor (
     private readonly validation: Validation,
-    private readonly addSurvey: AddSurvey
+    private readonly addSurvey: AddSurveyInterface
   ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {

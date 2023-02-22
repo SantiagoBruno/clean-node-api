@@ -1,7 +1,7 @@
 import {
   HttpRequest,
   Validation,
-  AddSurvey,
+  AddSurveyInterface,
   AddSurveyModel
 } from './add-survey-protocols'
 import { AddSurveyController } from './add-surveu-controller'
@@ -10,7 +10,7 @@ import { badRequest, noContent, serverError } from '../../../helpers/http/http-h
 interface sutTypes {
   sut: AddSurveyController
   validationStub: Validation
-  addSurveyStub: AddSurvey
+  addSurveyStub: AddSurveyInterface
 }
 
 const makeFakeRequest = (): HttpRequest => ({
@@ -33,8 +33,8 @@ const makeValidation = (): Validation => {
   return validationStub
 }
 
-const makeAddSurvey = (): AddSurvey => {
-  class AddSurveyStub implements AddSurvey {
+const makeAddSurvey = (): AddSurveyInterface => {
+  class AddSurveyStub implements AddSurveyInterface {
     async add (data: AddSurveyModel): Promise<void> {
       return await new Promise(resolve => resolve())
     }

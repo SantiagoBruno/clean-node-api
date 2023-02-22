@@ -1,11 +1,9 @@
-import {
-  AddSurveyModel,
-  AddSurveyRepository
-} from './add-survey-protocols'
-import { DbAddSurvey } from './add-survey'
+import { AddSurveyRepository } from './add-survey-protocols'
+import { AddSurveyModel } from './add-survey-interface'
+import { AddSurvey } from './add-survey'
 
 interface sutTypes {
-  sut: DbAddSurvey
+  sut: AddSurvey
   addSurveyRepositoryStub: AddSurveyRepository
 }
 
@@ -28,7 +26,7 @@ const makeAddSurveyRepositoryStub = (): AddSurveyRepository => {
 
 const makeSut = (): sutTypes => {
   const addSurveyRepositoryStub = makeAddSurveyRepositoryStub()
-  const sut = new DbAddSurvey(addSurveyRepositoryStub)
+  const sut = new AddSurvey(addSurveyRepositoryStub)
   return {
     sut,
     addSurveyRepositoryStub
