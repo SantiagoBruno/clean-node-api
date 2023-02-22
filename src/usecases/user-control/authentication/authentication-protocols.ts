@@ -1,4 +1,3 @@
-export * from './authentication-interface'
 export * from '../../../domain/models/account'
 export * from '../../protocols/repository/account/load-account-by-email-repository'
 export * from '../../protocols/repository/account/update-access-token-repository'

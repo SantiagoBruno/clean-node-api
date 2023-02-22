@@ -1,12 +1,12 @@
 import { DbAuthentication } from './authentication'
 import {
   AccountModel,
-  AuthenticationModel,
   LoadAccountByEmailRepository,
   UpdateAccessTokenRepository,
   HashCompare,
   Encrypter
 } from './authentication-protocols'
+import { AuthenticationModel } from './authentication-interface'
 
 interface SutTypes {
   sut: DbAuthentication

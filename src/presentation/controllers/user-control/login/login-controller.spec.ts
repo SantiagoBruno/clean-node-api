@@ -1,7 +1,7 @@
 import {
   HttpRequest,
   HttpResponse,
-  Authentication,
+  AuthenticationInterface,
   AuthenticationModel,
   Validation
 } from './login-controller-protocols'
@@ -11,12 +11,12 @@ import { MissingParamError, ServerError } from '../../../errors'
 
 interface sutTypes {
   sut: LoginController
-  authenticationStub: Authentication
+  authenticationStub: AuthenticationInterface
   validationStub: Validation
 }
 
-const makeAuthentication = (): Authentication => {
-  class AuthenticationStub implements Authentication {
+const makeAuthentication = (): AuthenticationInterface => {
+  class AuthenticationStub implements AuthenticationInterface {
     async auth (authentication: AuthenticationModel): Promise<string> {
       return await new Promise(resolve => resolve('any_token'))
     }

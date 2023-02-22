@@ -6,7 +6,7 @@ import {
   HttpResponse,
   HttpRequest,
   AddAccountInteface,
-  Authentication,
+  AuthenticationInterface,
   Validation
 } from './signup-controller-protocols'
 import { MissingParamError, ServerError, EmailInUseError } from '../../../errors'
@@ -16,7 +16,7 @@ interface Sut {
   sut: SignUpController
   addAccountStub: AddAccountInteface
   validationStub: Validation
-  authenticationStub: Authentication
+  authenticationStub: AuthenticationInterface
 }
 
 const makeAddAccount = (): AddAccountInteface => {
@@ -39,8 +39,8 @@ const makeValidation = (): Validation => {
   return validationStub
 }
 
-const makeAuthentication = (): Authentication => {
-  class AuthenticationStub implements Authentication {
+const makeAuthentication = (): AuthenticationInterface => {
+  class AuthenticationStub implements AuthenticationInterface {
     async auth (authentication: AuthenticationModel): Promise<string> {
       return await new Promise(resolve => resolve('any_token'))
     }

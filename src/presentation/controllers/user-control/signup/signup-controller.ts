@@ -3,7 +3,7 @@ import {
   HttpRequest,
   Controller,
   AddAccountInteface,
-  Authentication,
+  AuthenticationInterface,
   Validation
 } from './signup-controller-protocols'
 import { badRequest, serverError, ok, forbidden } from '../../../helpers/http/http-helper'
@@ -13,7 +13,7 @@ export class SignUpController implements Controller {
   constructor (
     private readonly addAccount: AddAccountInteface,
     private readonly validation: Validation,
-    private readonly authentication: Authentication
+    private readonly authentication: AuthenticationInterface
   ) {}
 
   async handle (httpRequest: HttpRequest): Promise<HttpResponse> {

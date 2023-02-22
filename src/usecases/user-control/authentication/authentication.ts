@@ -1,14 +1,16 @@
 import {
   AccountModel,
-  Authentication,
-  AuthenticationModel,
   LoadAccountByEmailRepository,
   UpdateAccessTokenRepository,
   HashCompare,
   Encrypter
 } from './authentication-protocols'
+import {
+  AuthenticationInterface,
+  AuthenticationModel
+} from './authentication-interface'
 
-export class DbAuthentication implements Authentication {
+export class DbAuthentication implements AuthenticationInterface {
   constructor (
     private readonly loadAcountByEmailRepository: LoadAccountByEmailRepository,
     private readonly hashCompare: HashCompare,
