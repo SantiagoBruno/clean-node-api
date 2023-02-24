@@ -1,5 +1,7 @@
 # SignUp 
 
+![](./imgs/clean-arch-signup.png)
+
 ## Casos de sucesso:
 1. :heavy_check_mark: Recebe uma requisição do tipo POST na rota /api/signup
 1. :heavy_check_mark: Valida dados obrigatórios **name**, **email**, **password**, e **passwordConfirmation**
