@@ -13,6 +13,6 @@ API desenvolvida com o objetivo de estudar os conceitos de:
 3. [Forgot Password](./documentation/forgot-password.md) - Ainda não implementado
 
 
-## Clean Architecture
+## Camadas da Clean Architecture
 
 ![](./documentation/imgs/clean-arch-layers.png)
