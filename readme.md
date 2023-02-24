@@ -3,7 +3,7 @@
 API desenvolvida com o objetivo de estudar os conceitos de: 
 * Clean Architecture
 * Desacoplamento
-* TDD 
+* TDD
 * SOLID
 * Docker
 
@@ -11,3 +11,8 @@ API desenvolvida com o objetivo de estudar os conceitos de:
 1. [SignUp](./documentation/signup.md)
 2. [Login](./documentation/login.md)
 3. [Forgot Password](./documentation/forgot-password.md) - Ainda não implementado
+
+
+## Clean Architecture
+
+![](./documentation/imgs/clean-arch-layers.png)

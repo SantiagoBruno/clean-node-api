@@ -1,5 +1,7 @@
 # Login
 
+![](./imgs/clean-arch-login.png)
+
 ## Casos de sucesso: 
 1. :heavy_check_mark: Recebe uma requisição do tipo **POST** na rota **/api/login**
 1. :heavy_check_mark: Valida dados obrigatórios: **email** e **password**
