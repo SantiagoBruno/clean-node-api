@@ -115,12 +115,10 @@ describe('Account Mongo Repository', () => {
       expect(account.password).toBe('any_hashed_password')
     })
 
-    /*
-    test('Should return null if loadByEmail fail', async () => {
+    test('Should return null if loadByToken fail', async () => {
       const sut = makeSut()
-      const account = await sut.loadByEmail('any_email')
+      const account = await sut.loadByToken('any_token', 'any_role')
       expect(account).toBeFalsy()
     })
-    */
   })
 })
