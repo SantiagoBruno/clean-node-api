@@ -1,4 +1,4 @@
-import { Controller, HttpRequest, HttpResponse } from '../../../presentation/protocols'
+import { Controller, HttpRequest, HttpResponse } from '../../presentation/protocols'
 import { Request, Response } from 'express'
 
 export const adptRoute = (controller: Controller) => {
