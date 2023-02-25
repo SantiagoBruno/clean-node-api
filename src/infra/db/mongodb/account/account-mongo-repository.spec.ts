@@ -6,7 +6,7 @@ let accountCollection: Collection
 
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {
-    await MongoHelper.connect(process.env.MONGO_URL)
+    await MongoHelper.connect(process.env.MONGO_URL || '')
   })
 
   afterAll(async () => {
@@ -79,5 +79,31 @@ describe('Account Mongo Repository', () => {
       expect(account).toBeTruthy()
       expect(account?.accessToken).toBe('any_token')
     })
+  })
+
+  describe('loadByToken', () => {
+    test('Should return an account on loadByToken without role', async () => {
+      const sut = makeSut()
+      await accountCollection.insertOne({
+        name: 'any_name',
+        email: 'any_email',
+        password: 'any_hashed_password',
+        accessToken: 'any_token'
+      })
+      const account = await sut.loadByToken('any_token')
+      expect(account).toBeTruthy()
+      expect(account.id).toBeTruthy()
+      expect(account.name).toBe('any_name')
+      expect(account.email).toBe('any_email')
+      expect(account.password).toBe('any_hashed_password')
+    })
+
+    /*
+    test('Should return null if loadByEmail fail', async () => {
+      const sut = makeSut()
+      const account = await sut.loadByEmail('any_email')
+      expect(account).toBeFalsy()
+    })
+    */
   })
 })
