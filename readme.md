@@ -11,8 +11,3 @@ API desenvolvida com o objetivo de estudar os conceitos de:
 1. [SignUp](./documentation/signup.md)
 2. [Login](./documentation/login.md)
 3. [Forgot Password](./documentation/forgot-password.md) - Ainda não implementado
-
-
-## Camadas da Clean Architecture
-
-![](./documentation/imgs/clean-arch-layers.png)
