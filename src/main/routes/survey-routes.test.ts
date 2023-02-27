@@ -59,7 +59,6 @@ describe('Login Routes', () => {
           accessToken
         }
       })
-      console.log(res)
       await request(app)
         .post('/api/addsurvey')
         .set('x-access-token', accessToken)
