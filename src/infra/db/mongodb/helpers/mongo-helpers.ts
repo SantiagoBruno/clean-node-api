@@ -20,12 +20,9 @@ export const MongoHelper = {
   },
   mapAccount (account: any): AccountModel {
     if (account) {
-      return {
-        id: account._id,
-        name: account?.name,
-        email: account?.email,
-        password: account?.password
-      }
+      account.id = account._id
+      delete account._id
+      return account
     }
   }
 }
