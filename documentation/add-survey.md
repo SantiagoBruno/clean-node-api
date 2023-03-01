@@ -1,5 +1,7 @@
 # Criar enquete
 
+![](./imgs/clean-node-api-AddSurvey.drawio.png)
+
 ## Casos de sucesso
 1. :heavy_check_mark: Recebe uma requisição do tipo **POST** na rota **/api/addsurvey/**
 1. :heavy_check_mark: Valida se a requisição foi feita por um admin 

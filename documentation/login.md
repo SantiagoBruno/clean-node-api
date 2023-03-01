@@ -1,6 +1,6 @@
 # Login
 
-![](./imgs/clean-arch-login.png)
+![](./imgs/clean-node-api-Login.drawio.png)
 
 ## Casos de sucesso: 
 1. :heavy_check_mark: Recebe uma requisição do tipo **POST** na rota **/api/login**

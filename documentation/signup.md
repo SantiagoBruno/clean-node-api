@@ -1,6 +1,6 @@
 # SignUp 
 
-![](./imgs/clean-arch-signup.png)
+![](./imgs/clean-node-api-SignUp.drawio.png)
 
 ## Casos de sucesso:
 1. :heavy_check_mark: Recebe uma requisição do tipo POST na rota /api/signup
@@ -13,7 +13,7 @@
 1. :heavy_check_mark: Gera um token de acesso a partir do ID do usuário 
 1. :heavy_check_mark: Atualiza os dados do usuário com o token de acesso gerado
 1. :heavy_check_mark: Retorna 200 com o token de acesso
-1. :heavy_multiplication_x: Envia email de verificação de email
+1. :heavy_multiplication_x: Alterar para enviar  email de verificação (Nesse caso não retornará mais o token de acesso)
 
 ## Exceções:
 
