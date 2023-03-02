@@ -1,6 +1,0 @@
-language: node.js
-node_js:
-  - 16
-script:
-  - eslint 'src/**'
-  - npm run test:coveralls
