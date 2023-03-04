@@ -2,6 +2,11 @@ import { LoadSurveys } from './load-surveys'
 import { LoadSurveysRepository } from '../../protocols/repository/survey/load-surveys-repository'
 import { SurveyModel } from './load-surveys-protocols'
 
+interface SutTypes {
+  sut: LoadSurveys
+  loadSurveysRepositoryStub: LoadSurveysRepository
+}
+
 const makeFakeSurveys = (): SurveyModel[] => ([
   {
     id: 'any_id',
@@ -36,10 +41,18 @@ const makeLoadSurveysRepositoryStub = (): LoadSurveysRepository => {
   return new LoadSurveysRepositoryStub()
 }
 
+const makeSut = (): SutTypes => {
+  const loadSurveysRepositoryStub = makeLoadSurveysRepositoryStub()
+  const sut = new LoadSurveys(loadSurveysRepositoryStub)
+  return {
+    sut,
+    loadSurveysRepositoryStub
+  }
+}
+
 describe('LoadSurveys', () => {
   test('Shoud call LoadSurveysRepository', async () => {
-    const loadSurveysRepositoryStub = makeLoadSurveysRepositoryStub()
-    const sut = new LoadSurveys(loadSurveysRepositoryStub)
+    const { sut, loadSurveysRepositoryStub } = makeSut()
     const loadAllSpy = jest.spyOn(loadSurveysRepositoryStub, 'loadAll')
     await sut.load()
     expect(loadAllSpy).toHaveBeenCalled()
