@@ -1,5 +1,4 @@
 import { Collection, MongoClient } from 'mongodb'
-import { AccountModel } from '../../../../domain/models/account'
 
 export const MongoHelper = {
   client: null as MongoClient,
@@ -18,11 +17,18 @@ export const MongoHelper = {
     }
     return this.client.db().collection(name)
   },
-  mapAccount (account: any): AccountModel {
-    if (account) {
-      account.id = account._id
-      delete account._id
-      return account
+  mapMongoDbObject (object: any): any {
+    if (object) {
+      object.id = object._id
+      delete object._id
+      return object
     }
+  },
+  mapMongoDbArrObjects (objects: any[]): any {
+    const resultObj = [...objects]
+    resultObj.forEach((obj) => {
+      obj = this.mapMongoDbObject(obj)
+    })
+    return resultObj
   }
 }

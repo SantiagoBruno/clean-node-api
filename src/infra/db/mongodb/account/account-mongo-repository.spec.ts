@@ -72,7 +72,7 @@ describe('Account Mongo Repository', () => {
       })
       const id = result.insertedId
       let account = await accountCollection.findOne({ _id: id })
-      const mappedAccount = MongoHelper.mapAccount(account)
+      const mappedAccount = MongoHelper.mapMongoDbObject(account)
       expect(mappedAccount.accessToken).toBeFalsy()
       await sut.updateAccessToken(mappedAccount.id, 'any_token')
       account = await accountCollection.findOne({ _id: mappedAccount.id })

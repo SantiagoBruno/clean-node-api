@@ -21,7 +21,7 @@ describe('Mongo Helper', () => {
       email: 'any_email@email.com',
       password: 'any_password'
     }
-    const mappedAccount = sut.mapAccount(account)
+    const mappedAccount = sut.mapMongoDbObject(account)
     expect(mappedAccount).toEqual({
       id: 'any_id',
       name: 'any_name',

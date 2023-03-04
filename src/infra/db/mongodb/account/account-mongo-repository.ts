@@ -16,14 +16,14 @@ export class AccountMongoRepository implements
     const result = await accountCollection.insertOne(accountData)
     const id = result.insertedId
     const account = await accountCollection.findOne({ _id: id })
-    const mappedAccount = MongoHelper.mapAccount(account)
+    const mappedAccount = MongoHelper.mapMongoDbObject(account)
     return await new Promise(resolve => resolve(mappedAccount))
   }
 
   async loadByEmail (email: string): Promise<AccountModel> {
     const accountCollection = await MongoHelper.getCollection('accounts')
     const account = await accountCollection.findOne({ email })
-    const mappedAccount = MongoHelper.mapAccount(account)
+    const mappedAccount = MongoHelper.mapMongoDbObject(account)
     return await new Promise(resolve => resolve(mappedAccount))
   }
 
@@ -49,7 +49,7 @@ export class AccountMongoRepository implements
         role: 'admin'
       }]
     })
-    const mappedAccount = MongoHelper.mapAccount(account)
+    const mappedAccount = MongoHelper.mapMongoDbObject(account)
     return await new Promise(resolve => resolve(mappedAccount))
   }
 }
