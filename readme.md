@@ -12,3 +12,4 @@ API desenvolvida com o objetivo de estudar os conceitos de:
 2. [Login](./documentation/login.md)
 3. [Forgot Password](./documentation/forgot-password.md) - Ainda não implementado
 4. [Add Survey](./documentation/add-survey.md)
+5. [Load Surveys](./documentation/load-surveys.md)
