@@ -1,6 +1,6 @@
 # SignUp 
 
-![](./imgs/clean-node-api-SignUp.drawio.png)
+![](./imgs/clean-node-api-SignUp.png)
 
 ## Casos de sucesso:
 1. :heavy_check_mark: Recebe uma requisição do tipo POST na rota /api/signup

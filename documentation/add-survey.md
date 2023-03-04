@@ -1,6 +1,6 @@
 # Criar enquete
 
-![](./imgs/clean-node-api-AddSurvey.drawio.png)
+![](./imgs/clean-node-api-AddSurvey.png)
 
 ## Casos de sucesso
 1. :heavy_check_mark: Recebe uma requisição do tipo **POST** na rota **/api/addsurvey/**
