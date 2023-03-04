@@ -1,3 +1,4 @@
+import MockDate from 'mockdate'
 import { LoadSurveys } from './load-surveys'
 import { LoadSurveysRepository } from '../../protocols/repository/survey/load-surveys-repository'
 import { SurveyModel } from './load-surveys-protocols'
@@ -51,10 +52,24 @@ const makeSut = (): SutTypes => {
 }
 
 describe('LoadSurveys', () => {
+  beforeAll(() => {
+    MockDate.set(new Date())
+  })
+
+  afterAll(() => {
+    MockDate.reset()
+  })
+
   test('Shoud call LoadSurveysRepository', async () => {
     const { sut, loadSurveysRepositoryStub } = makeSut()
     const loadAllSpy = jest.spyOn(loadSurveysRepositoryStub, 'loadAll')
     await sut.load()
     expect(loadAllSpy).toHaveBeenCalled()
+  })
+
+  test('Shoud return a lista of surveys on success', async () => {
+    const { sut } = makeSut()
+    const surveys = await sut.load()
+    expect(surveys).toEqual(makeFakeSurveys())
   })
 })
