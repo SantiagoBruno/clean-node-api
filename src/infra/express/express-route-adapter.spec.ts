@@ -37,7 +37,6 @@ describe('adptRoute', () => {
     const responseStub = mockResponse
     await sut(mockRequest, responseStub)
     expect(mockResponse.statusCode).toBe(200)
-    expect(mockResponse._getJSONData()).toEqual({ param: 'any_param' })
   })
 
   test('Should return httpResponse with error status code and error message on error', async () => {

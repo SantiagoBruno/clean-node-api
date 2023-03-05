@@ -11,13 +11,13 @@ export const adptRoute = (controller: Controller): expressControllerFunction => 
       const httpRequest: HttpRequest = {
         body: req.body
       }
-      controller.handle(httpRequest).then((httpResponse: HttpResponse) => {
-        if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299) {
-          res.status(httpResponse.statusCode).json(httpResponse.body)
-        } else {
-          res.status(httpResponse.statusCode).json(httpResponse.body.message)
-        }
-      }).catch((error) => { throw error })
+      const httpResponse: HttpResponse = await controller.handle(httpRequest)
+
+      if (httpResponse.statusCode >= 200 && httpResponse.statusCode <= 299) {
+        res.status(httpResponse.statusCode).json(httpResponse.body)
+      } else {
+        res.status(httpResponse.statusCode).json(httpResponse.body.message)
+      }
     }
   )
 }
