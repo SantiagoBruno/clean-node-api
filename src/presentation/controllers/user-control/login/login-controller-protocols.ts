@@ -1,2 +1,2 @@
 export * from '../../../protocols'
-export * from '../../../../usecases/user-control/authentication/authentication-interface'
+export * from '../../../../application/user-control/authentication/authentication-interface'
