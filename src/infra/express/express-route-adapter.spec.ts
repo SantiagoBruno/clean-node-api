@@ -23,23 +23,21 @@ const makeControllerStub = (): Controller => {
 }
 
 describe('adptRoute', () => {
-  test('Should call handle method from controller with correct values', () => {
+  test('Should call handle method from controller with correct values', async () => {
     const controller = makeControllerStub()
     const sut = adptRoute(controller)
     const spyHandle = jest.spyOn(controller, 'handle')
-    sut(mockRequest, mockResponse)
+    await sut(mockRequest, mockResponse)
     expect(spyHandle).toHaveBeenCalledWith({ body: mockRequest.body })
   })
 
-  test('Should return httpResponse with status code between 200 and 204 and body on success', async () => {
+  test('Should return httpResponse with status code between 200 and 299 and body on success', async () => {
     const controller = makeControllerStub()
     const sut = adptRoute(controller)
     const responseStub = mockResponse
-    sut(mockRequest, responseStub)
+    await sut(mockRequest, responseStub)
     expect(mockResponse.statusCode).toBe(200)
-    expect(mockResponse._getJSONData()).toEqual({
-      param: 'any_param'
-    })
+    expect(mockResponse._getJSONData()).toEqual({ param: 'any_param' })
   })
 
   test('Should return httpResponse with error status code and error message on error', async () => {
@@ -54,6 +52,15 @@ describe('adptRoute', () => {
     })))
     await sut(mockRequest, mockResponse)
     expect(mockResponse.statusCode).toBe(500)
-    // expect(mockResponse._getJSONData()).toEqual('any_error')
+  })
+
+  test('Should throw if handle throws', async () => {
+    const controller = makeControllerStub()
+    const sut = adptRoute(controller)
+    jest.spyOn(controller, 'handle').mockImplementationOnce(() => {
+      throw new Error()
+    })
+    const promise = sut(mockRequest, mockResponse)
+    await expect(promise).rejects.toThrow()
   })
 })
