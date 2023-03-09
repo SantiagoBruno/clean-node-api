@@ -1,5 +1,5 @@
-import { Controller, HttpRequest, HttpResponse } from '../../presentation/protocols'
 import { Request, Response } from 'express'
+import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
 
 interface expressControllerFunction {
   (req: Request, res: Response)

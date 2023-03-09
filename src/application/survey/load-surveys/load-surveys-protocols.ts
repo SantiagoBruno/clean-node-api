@@ -1,1 +1,1 @@
-export * from '../../../domain/models/survey'
+export * from '@/domain/models/survey'

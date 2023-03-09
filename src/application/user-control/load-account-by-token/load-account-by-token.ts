@@ -1,7 +1,8 @@
+import { AccountModel } from '@/application/user-control/add-account/add-account-protocols'
+import { Decrypter } from '@/application/protocols/criptography/decrypter'
+import { LoadAccountByTokenRepository } from '@/application/protocols/repository/account/load-account-by-token-repository'
+
 import { LoadAccountByTokenInterface } from './load-account-by-token-interface'
-import { AccountModel } from '../add-account/add-account-protocols'
-import { Decrypter } from '../../protocols/criptography/decrypter'
-import { LoadAccountByTokenRepository } from '../../protocols/repository/account/load-account-by-token-repository'
 
 export class LoadAccountByToken implements LoadAccountByTokenInterface {
   constructor (

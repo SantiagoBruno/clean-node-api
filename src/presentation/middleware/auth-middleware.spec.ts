@@ -1,11 +1,11 @@
-import { AuthMiddleware } from './auth-middleware'
-import { forbidden, ok, serverError } from '../helpers/http/http-helper'
-import { AccessDeniedError } from '../errors/access-denied-error'
+import { forbidden, ok, serverError } from '@/presentation/helpers/http/http-helper'
+import { AccessDeniedError } from '@/presentation/errors/access-denied-error'
 import {
   HttpRequest,
   LoadAccountByTokenInterface,
   AccountModel
 } from './auth-middleware-protocols'
+import { AuthMiddleware } from './auth-middleware'
 
 interface SutTypes {
   sut: AuthMiddleware

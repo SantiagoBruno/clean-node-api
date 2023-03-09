@@ -1,1 +1,1 @@
-export * from '../../protocols/repository/survey/add-survey-repository'
+export * from '@/application/protocols/repository/survey/add-survey-repository'

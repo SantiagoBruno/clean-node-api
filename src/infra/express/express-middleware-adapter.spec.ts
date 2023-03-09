@@ -1,6 +1,6 @@
-import { Middleware, HttpRequest, HttpResponse } from '../../presentation/protocols'
-import { adptMiddleware } from './express-middleware-adapter'
 import httpMocks from 'node-mocks-http'
+import { Middleware, HttpRequest, HttpResponse } from '@/presentation/protocols'
+import { adptMiddleware } from './express-middleware-adapter'
 
 const mockRequest = httpMocks.createRequest({
   headers: {

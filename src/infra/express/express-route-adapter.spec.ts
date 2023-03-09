@@ -1,6 +1,6 @@
-import { Controller, HttpRequest, HttpResponse } from '../../presentation/protocols'
-import { adptRoute } from './express-route-adapter'
 import httpMocks from 'node-mocks-http'
+import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
+import { adptRoute } from './express-route-adapter'
 
 const mockRequest = httpMocks.createRequest({
   body: {

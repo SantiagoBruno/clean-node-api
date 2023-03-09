@@ -1,10 +1,10 @@
 import MockDate from 'mockdate'
+import { noContent, ok, serverError } from '@/presentation/helpers/http/http-helper'
 import { LoadSurveysController } from './load-surveys-controller'
 import {
   SurveyModel,
   LoadSurveysInterface
 } from './load-surveys-protocols'
-import { noContent, ok, serverError } from '../../../helpers/http/http-helper'
 
 interface SutTypes {
   sut: LoadSurveysController
