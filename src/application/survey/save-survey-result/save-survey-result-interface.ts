@@ -1,7 +1,7 @@
-import { SurveyResultModel } from '@/domain/models/survey -result'
+import { SurveyResultModel } from './save-survey-result-protocols'
 
-export type AddSurveyResultModel = Omit<SurveyResultModel, 'id'>
+export type SaveSurveyResultModel = Omit<SurveyResultModel, 'id'> & { id?: string }
 
-export interface SaveSurveyResult {
-  save: (data: AddSurveyResultModel) => Promise<SurveyResultModel>
+export interface SaveSurveyResultInterface {
+  save: (data: SaveSurveyResultModel) => Promise<SurveyResultModel>
 }
