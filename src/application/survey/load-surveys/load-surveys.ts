@@ -1,6 +1,5 @@
 import { LoadSurveysInterface } from './load-surveys-interface'
-import { SurveyModel } from './load-surveys-protocols'
-import { LoadSurveysRepository } from '@/application/protocols/repository/survey/load-surveys-repository'
+import { LoadSurveysRepository, SurveyModel } from './load-surveys-protocols'
 
 export class LoadSurveys implements LoadSurveysInterface {
   constructor (private readonly loadSurveysRepository: LoadSurveysRepository) {}

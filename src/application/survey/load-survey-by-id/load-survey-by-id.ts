@@ -1,6 +1,5 @@
-import { LoadSurveyByIdRepository } from '@/application/protocols/repository/survey/load-survey-by-id-repository'
 import { LoadSurveyByIdInterface } from './load-survey-by-id-interface'
-import { SurveyModel } from './load-survey-by-id-protocols'
+import { LoadSurveyByIdRepository, SurveyModel } from './load-survey-by-id-protocols'
 
 export class LoadSurveyById implements LoadSurveyByIdInterface {
   constructor (
