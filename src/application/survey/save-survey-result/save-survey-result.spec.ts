@@ -56,4 +56,10 @@ describe('SaveSurveyResult', () => {
     await sut.save(makeFakeSaveSurveyResult())
     expect(saveSpy).toHaveBeenCalledWith(makeFakeSaveSurveyResult())
   })
+
+  test('Shoud return a SurveyResult on success', async () => {
+    const { sut } = makeSut()
+    const surveyResult = await sut.save(makeFakeSaveSurveyResult())
+    expect(surveyResult).toEqual(makeFakeSurveyResult())
+  })
 })
