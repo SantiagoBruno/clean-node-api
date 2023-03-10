@@ -19,7 +19,7 @@ export const MongoHelper = {
   },
   mapMongoDbObject (object: any): any {
     if (object) {
-      object.id = object._id
+      object.id = object._id.toString()
       delete object._id
       return object
     }

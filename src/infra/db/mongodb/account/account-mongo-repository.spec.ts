@@ -1,4 +1,4 @@
-import { Collection } from 'mongodb'
+import { Collection, ObjectId } from 'mongodb'
 import { MongoHelper } from '@/infra/db/mongodb/helpers/mongo-helpers'
 import { AccountMongoRepository } from './account-mongo-repository'
 
@@ -70,12 +70,12 @@ describe('Account Mongo Repository', () => {
         email: 'any_email',
         password: 'any_hashed_password'
       })
-      const id = result.insertedId
-      let account = await accountCollection.findOne({ _id: id })
+      const id = result.insertedId.toString()
+      let account = await accountCollection.findOne({ _id: new ObjectId(id) })
       const mappedAccount = MongoHelper.mapMongoDbObject(account)
       expect(mappedAccount.accessToken).toBeFalsy()
       await sut.updateAccessToken(mappedAccount.id, 'any_token')
-      account = await accountCollection.findOne({ _id: mappedAccount.id })
+      account = await accountCollection.findOne({ _id: new ObjectId(id) })
       expect(account).toBeTruthy()
       expect(account?.accessToken).toBe('any_token')
     })
