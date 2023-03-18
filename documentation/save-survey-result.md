@@ -5,7 +5,7 @@
 1. :heavy_multiplication_x: Recebe uma requisição do tipo **PUT** na rota **/api/survey/{survey_id}/results**
 1. :heavy_multiplication_x: Valida se a requisição foi feita por um usuário autorizado 
 1. :heavy_multiplication_x: Valida o parâmetro **survey_id**
-1. :heavy_multiplication_x: Valida se o campo answer é uma resposta válida
+1. :heavy_multiplication_x: Valida se o campo **answer** é uma resposta válida
 1. :heavy_multiplication_x: **Cria** um resultado de enquete com os dados fornecidos caso não tenha um registro 
 1. :heavy_multiplication_x: **Atualiza** um resultado de enquete com os dados fornecidos daso já tenha 
 1. :heavy_multiplication_x: Retorna **200** com os dados do resultado da enquete
