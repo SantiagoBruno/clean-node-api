@@ -18,4 +18,4 @@
 1. :heavy_multiplication_x: Retorna erro **403** se a resposta enviada pelo cliente for uma resposta inválida 
 1. :heavy_multiplication_x: Retorna erro **500** se der erro ao tentar cirar o resultado da enquete
 1. :heavy_multiplication_x: Retorna erro **500** se der erro ao tentar atualizar o resultado da enquete 
-1. :heavy_multiplication_x: Retorna erro **500** se der erro ao tentar carregar a enquete 
+1. :heavy_check_mark: Retorna erro **500** se der erro ao tentar carregar a enquete 
