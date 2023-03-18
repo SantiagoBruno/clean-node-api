@@ -1,6 +1,7 @@
 import {
   Controller,
   forbidden,
+  InvalidParamError,
   HttpRequest,
   HttpResponse,
   LoadSurveyByIdInterface
@@ -15,7 +16,7 @@ export class SaveSurveyResultController implements Controller {
     const { surveyId } = httpRequest.params
     const survey = await this.loadSurveyByIdInterface.loadById(surveyId)
     if (!survey) {
-      return forbidden(new Error())
+      return forbidden(new InvalidParamError('surveyId'))
     }
     return null
   }
