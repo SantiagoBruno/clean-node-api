@@ -8,7 +8,7 @@
 1. :heavy_check_mark: Valida se o campo **answer** é uma resposta válida
 1. :heavy_check_mark: **Cria** um resultado de enquete com os dados fornecidos caso não tenha um registro 
 1. :heavy_check_mark: **Atualiza** um resultado de enquete com os dados fornecidos daso já tenha 
-1. :heavy_multiplication_x: Retorna **200** com os dados do resultado da enquete
+1. :heavy_check_mark: Retorna **200** com os dados do resultado da enquete
 
 ## Exceção 
 
