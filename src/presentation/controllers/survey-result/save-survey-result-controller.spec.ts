@@ -8,7 +8,8 @@ import {
   SurveyModel,
   SaveSurveyResultInterface,
   SaveSurveyResultModel,
-  SurveyResultModel
+  SurveyResultModel,
+  ok
 } from './save-survey-result-protocols'
 import MockDate from 'mockdate'
 
@@ -43,6 +44,14 @@ const makeFakeSurvey = (): SurveyModel => ({
   date: new Date()
 })
 
+const makeFakeSurveyResult = (): SurveyResultModel => ({
+  id: 'any_id',
+  surveyId: 'any_survey_id',
+  accountId: 'any_account_id',
+  date: new Date(),
+  answer: 'any_answer_1'
+})
+
 const makeLoadSurveyByIdStub = (): LoadSurveyByIdInterface => {
   class LoadSurveyByIdStub implements LoadSurveyByIdInterface {
     async loadById (id: string): Promise<SurveyModel> {
@@ -55,7 +64,7 @@ const makeLoadSurveyByIdStub = (): LoadSurveyByIdInterface => {
 const makeSaveSurveyResultStub = (): SaveSurveyResultInterface => {
   class SaveSurveyResultStub implements SaveSurveyResultInterface {
     async save (data: SaveSurveyResultModel): Promise<SurveyResultModel> {
-      return null
+      return await new Promise(resolve => resolve(makeFakeSurveyResult()))
     }
   }
 
@@ -73,7 +82,7 @@ const makeSut = (): SutTypes => {
   }
 }
 
-describe('SaveSurveyResult controller', () => {
+describe('SaveSurveyResultController', () => {
   beforeAll(() => {
     MockDate.set(new Date())
   })
@@ -138,5 +147,11 @@ describe('SaveSurveyResult controller', () => {
     })
     const httpResponse = await sut.handle(makeFakeRequest())
     expect(httpResponse).toEqual(serverError(new Error()))
+  })
+
+  test('Should return 200 on success', async () => {
+    const { sut } = makeSut()
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(ok(makeFakeSurveyResult()))
   })
 })
