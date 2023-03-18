@@ -29,7 +29,7 @@ const makeFakeRequest = (): HttpRequest => ({
 })
 
 const makeFakeSurvey = (): SurveyModel => ({
-  id: 'any_id',
+  id: 'any_survey_id',
   question: 'any_question',
   answers: [
     {
@@ -129,5 +129,14 @@ describe('SaveSurveyResult controller', () => {
       date: new Date(),
       answer: 'any_answer_1'
     })
+  })
+
+  test('Should return 500 if SaveSurveyResult throws', async () => {
+    const { sut, saveSurveyResultStub } = makeSut()
+    jest.spyOn(saveSurveyResultStub, 'save').mockImplementationOnce(async () => {
+      return await new Promise((resolve, reject) => reject(new Error()))
+    })
+    const httpResponse = await sut.handle(makeFakeRequest())
+    expect(httpResponse).toEqual(serverError(new Error()))
   })
 })
