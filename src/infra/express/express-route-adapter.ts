@@ -9,7 +9,9 @@ export const adptRoute = (controller: Controller): expressControllerFunction => 
   return (
     async (req: Request, res: Response) => {
       const httpRequest: HttpRequest = {
-        body: req.body
+        body: req.body,
+        params: req.params,
+        accountId: req.accountId
       }
       const httpResponse: HttpResponse = await controller.handle(httpRequest)
 

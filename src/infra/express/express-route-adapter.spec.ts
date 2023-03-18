@@ -4,8 +4,12 @@ import { adptRoute } from './express-route-adapter'
 
 const mockRequest = httpMocks.createRequest({
   body: {
-    param: 'any_param'
-  }
+    param: 'any_body_param'
+  },
+  params: {
+    param: 'any_params_param'
+  },
+  accountId: 'any_account_id'
 })
 
 const mockResponse = httpMocks.createResponse()
@@ -28,7 +32,11 @@ describe('adptRoute', () => {
     const sut = adptRoute(controller)
     const spyHandle = jest.spyOn(controller, 'handle')
     await sut(mockRequest, mockResponse)
-    expect(spyHandle).toHaveBeenCalledWith({ body: mockRequest.body })
+    expect(spyHandle).toHaveBeenCalledWith({
+      body: mockRequest.body,
+      params: mockRequest.params,
+      accountId: mockRequest.accountId
+    })
   })
 
   test('Should return httpResponse with status code between 200 and 299 and body on success', async () => {

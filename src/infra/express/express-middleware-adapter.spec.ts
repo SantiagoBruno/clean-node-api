@@ -18,7 +18,7 @@ const makeMiddlewareStub = (): Middleware => {
       return await new Promise(resolve => resolve({
         statusCode: 200,
         body: {
-          account_id: 'any_id'
+          accountId: 'any_id'
         }
       }))
     }
@@ -41,7 +41,7 @@ describe('adptRoute', () => {
     const spyNext = jest.fn(mockNextFunction)
     await sut(mockRequest, mockResponse, spyNext)
     expect(mockResponse.statusCode).toBe(200)
-    expect(mockRequest.account_id).toEqual('any_id')
+    expect(mockRequest.accountId).toEqual('any_id')
     expect(spyNext).toHaveBeenCalled()
   })
 
