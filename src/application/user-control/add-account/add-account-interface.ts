@@ -1,11 +1,7 @@
 import { AccountModel } from './add-account-protocols'
 
-export interface AddAccountModel {
-  name: string
-  email: string
-  password: string
-}
+export type AddAccountInterfaceParams = Omit<AccountModel, 'id'>
 
 export interface AddAccountInteface {
-  add: (addAccount: AddAccountModel) => Promise< AccountModel | null>
+  add: (addAccount: AddAccountInterfaceParams) => Promise< AccountModel | null>
 }

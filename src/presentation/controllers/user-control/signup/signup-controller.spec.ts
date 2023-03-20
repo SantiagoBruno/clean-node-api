@@ -3,8 +3,8 @@ import { ok, serverError, badRequest, forbidden } from '@/presentation/helpers/h
 import { SignUpController } from './signup-controller'
 import {
   AccountModel,
-  AddAccountModel,
-  AuthenticationModel,
+  AddAccountInterfaceParams,
+  AuthenticationInterfaceParams,
   HttpResponse,
   HttpRequest,
   AddAccountInteface,
@@ -21,7 +21,7 @@ interface Sut {
 
 const makeAddAccount = (): AddAccountInteface => {
   class AddAccountStub implements AddAccountInteface {
-    async add (account: AddAccountModel): Promise<AccountModel> {
+    async add (account: AddAccountInterfaceParams): Promise<AccountModel> {
       return await new Promise(resolve => resolve(makeFakeAccount()))
     }
   }
@@ -41,7 +41,7 @@ const makeValidation = (): Validation => {
 
 const makeAuthentication = (): AuthenticationInterface => {
   class AuthenticationStub implements AuthenticationInterface {
-    async auth (authentication: AuthenticationModel): Promise<string> {
+    async auth (authentication: AuthenticationInterfaceParams): Promise<string> {
       return await new Promise(resolve => resolve('any_token'))
     }
   }

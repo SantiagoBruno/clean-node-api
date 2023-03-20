@@ -1,5 +1,4 @@
-import { AddSurveyRepository } from './add-survey-protocols'
-import { AddSurveyModel } from './add-survey-interface'
+import { AddSurveyRepository, AddSurveyRepositoryParams } from './add-survey-protocols'
 import { AddSurvey } from './add-survey'
 import MockDate from 'mockdate'
 
@@ -8,7 +7,7 @@ interface sutTypes {
   addSurveyRepositoryStub: AddSurveyRepository
 }
 
-const makeFakeSurveyData = (): AddSurveyModel => ({
+const makeFakeSurveyData = (): AddSurveyRepositoryParams => ({
   question: 'any_question',
   answers: [{
     image: 'any_image',
@@ -19,7 +18,7 @@ const makeFakeSurveyData = (): AddSurveyModel => ({
 
 const makeAddSurveyRepositoryStub = (): AddSurveyRepository => {
   class AddSurveyRepositoryStub implements AddSurveyRepository {
-    async add (surveyData: AddSurveyModel): Promise<void> {
+    async add (surveyData: AddSurveyRepositoryParams): Promise<void> {
       return await new Promise(resolve => resolve())
     }
   }

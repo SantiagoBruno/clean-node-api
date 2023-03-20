@@ -1,8 +1,7 @@
 import { MongoHelper } from '@/infra/db/mongodb/helpers/mongo-helpers'
-import { AddAccountRepository } from '@/application/protocols/repository/account/add-account-repository'
+import { AddAccountRepository, AddAccountRepositoryParams } from '@/application/protocols/repository/account/add-account-repository'
 import { LoadAccountByEmailRepository } from '@/application/protocols/repository/account/load-account-by-email-repository'
 import { UpdateAccessTokenRepository } from '@/application/protocols/repository/account/update-access-token-repository'
-import { AddAccountModel } from '@/application/user-control/add-account/add-account-interface'
 import { LoadAccountByTokenRepository } from '@/application/protocols/repository/account/load-account-by-token-repository'
 import { AccountModel } from '@/domain/models/account'
 import { ObjectId } from 'mongodb'
@@ -12,7 +11,7 @@ export class AccountMongoRepository implements
   LoadAccountByEmailRepository,
   UpdateAccessTokenRepository,
   LoadAccountByTokenRepository {
-  async add (accountData: AddAccountModel): Promise<AccountModel> {
+  async add (accountData: AddAccountRepositoryParams): Promise<AccountModel> {
     const accountCollection = await MongoHelper.getCollection('accounts')
     const result = await accountCollection.insertOne(accountData)
     const id = result.insertedId

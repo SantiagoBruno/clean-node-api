@@ -1,7 +1,7 @@
 import { SurveyResultModel } from './save-survey-result-protocols'
 
-export type SaveSurveyResultModel = Omit<SurveyResultModel, 'id'> & { id?: string }
+export type SaveSurveyResultInterfaceParams = Omit<SurveyResultModel, 'id'> & { id?: string }
 
 export interface SaveSurveyResultInterface {
-  save: (data: SaveSurveyResultModel) => Promise<SurveyResultModel>
+  save: (data: SaveSurveyResultInterfaceParams) => Promise<SurveyResultModel>
 }

@@ -1,5 +1,7 @@
-import { AddSurveyModel } from '@/application/survey/add-survey/add-survey-interface'
+import { SurveyModel } from '@/domain/models/survey'
+
+export type AddSurveyRepositoryParams = Omit<SurveyModel, 'id'>
 
 export interface AddSurveyRepository {
-  add: (surveyData: AddSurveyModel) => Promise<void>
+  add: (surveyData: AddSurveyRepositoryParams) => Promise<void>
 }

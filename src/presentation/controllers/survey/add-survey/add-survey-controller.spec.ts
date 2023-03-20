@@ -5,7 +5,7 @@ import {
   HttpRequest,
   Validation,
   AddSurveyInterface,
-  AddSurveyModel
+  AddSurveyInterfaceParams
 } from './add-survey-protocols'
 
 interface sutTypes {
@@ -37,7 +37,7 @@ const makeValidation = (): Validation => {
 
 const makeAddSurvey = (): AddSurveyInterface => {
   class AddSurveyStub implements AddSurveyInterface {
-    async add (data: AddSurveyModel): Promise<void> {
+    async add (data: AddSurveyInterfaceParams): Promise<void> {
       return await new Promise(resolve => resolve())
     }
   }

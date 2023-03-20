@@ -5,7 +5,7 @@ import {
   HttpRequest,
   HttpResponse,
   AuthenticationInterface,
-  AuthenticationModel,
+  AuthenticationInterfaceParams,
   Validation
 } from './login-controller-protocols'
 
@@ -17,7 +17,7 @@ interface sutTypes {
 
 const makeAuthentication = (): AuthenticationInterface => {
   class AuthenticationStub implements AuthenticationInterface {
-    async auth (authentication: AuthenticationModel): Promise<string> {
+    async auth (authentication: AuthenticationInterfaceParams): Promise<string> {
       return await new Promise(resolve => resolve('any_token'))
     }
   }

@@ -7,7 +7,7 @@ import {
 } from './authentication-protocols'
 import {
   AuthenticationInterface,
-  AuthenticationModel
+  AuthenticationInterfaceParams
 } from './authentication-interface'
 
 export class Authentication implements AuthenticationInterface {
@@ -18,7 +18,7 @@ export class Authentication implements AuthenticationInterface {
     private readonly updateAccessTokenRepository: UpdateAccessTokenRepository
   ) {}
 
-  async auth (authentication: AuthenticationModel): Promise<string> {
+  async auth (authentication: AuthenticationInterfaceParams): Promise<string> {
     const account: AccountModel = await this.loadAcountByEmailRepository.loadByEmail(authentication.email)
     if (account) {
       const isValid = await this.hashCompare.compare(authentication.password, account.password)

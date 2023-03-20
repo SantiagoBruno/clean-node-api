@@ -1,4 +1,4 @@
-import { SaveSurveyResultModel, SaveSurveyResultInterface } from './save-survey-result-interface'
+import { SaveSurveyResultInterfaceParams, SaveSurveyResultInterface } from './save-survey-result-interface'
 import { SaveSurveyResultRepository, SurveyResultModel } from './save-survey-result-protocols'
 
 export class SaveSurveyResult implements SaveSurveyResultInterface {
@@ -6,7 +6,7 @@ export class SaveSurveyResult implements SaveSurveyResultInterface {
     private readonly saveSurveyResultRepository: SaveSurveyResultRepository
   ) {}
 
-  async save (data: SaveSurveyResultModel): Promise<SurveyResultModel> {
+  async save (data: SaveSurveyResultInterfaceParams): Promise<SurveyResultModel> {
     const surveyResult = await this.saveSurveyResultRepository.save(data)
     return surveyResult
   }

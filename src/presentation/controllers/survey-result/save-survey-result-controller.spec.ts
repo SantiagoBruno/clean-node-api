@@ -7,7 +7,7 @@ import {
   LoadSurveyByIdInterface,
   SurveyModel,
   SaveSurveyResultInterface,
-  SaveSurveyResultModel,
+  SaveSurveyResultInterfaceParams,
   SurveyResultModel,
   ok
 } from './save-survey-result-protocols'
@@ -63,7 +63,7 @@ const makeLoadSurveyByIdStub = (): LoadSurveyByIdInterface => {
 
 const makeSaveSurveyResultStub = (): SaveSurveyResultInterface => {
   class SaveSurveyResultStub implements SaveSurveyResultInterface {
-    async save (data: SaveSurveyResultModel): Promise<SurveyResultModel> {
+    async save (data: SaveSurveyResultInterfaceParams): Promise<SurveyResultModel> {
       return await new Promise(resolve => resolve(makeFakeSurveyResult()))
     }
   }

@@ -6,7 +6,7 @@ import {
   HashCompare,
   Encrypter
 } from './authentication-protocols'
-import { AuthenticationModel } from './authentication-interface'
+import { AuthenticationInterfaceParams } from './authentication-interface'
 
 interface SutTypes {
   sut: Authentication
@@ -23,7 +23,7 @@ const makeFakeAccount = (): AccountModel => ({
   password: 'hash_password'
 })
 
-const makeFakeAuthentication = (): AuthenticationModel => ({
+const makeFakeAuthentication = (): AuthenticationInterfaceParams => ({
   email: 'any_email@email.com',
   password: 'any_password'
 })
