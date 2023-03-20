@@ -1,13 +1,13 @@
 import { AddSurveyRepository } from './add-survey-protocols'
-import { AddSurveyInterface, AddSurveyInterfaceParams } from './add-survey-interface'
+import { AddSurveyInterface, AddSurveyParams } from './add-survey-interface'
 
 export class AddSurvey implements AddSurveyInterface {
   constructor (
     private readonly AddSurveyRepository: AddSurveyRepository
   ) {}
 
-  async add (addSurveyInterfaceParams: AddSurveyInterfaceParams): Promise<void> {
-    await this.AddSurveyRepository.add(addSurveyInterfaceParams)
+  async add (addSurveyParams: AddSurveyParams): Promise<void> {
+    await this.AddSurveyRepository.add(addSurveyParams)
     return null
   }
 }

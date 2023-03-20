@@ -1,32 +1,15 @@
-import { AddSurveyRepository, AddSurveyRepositoryParams } from './add-survey-protocols'
-import { AddSurvey } from './add-survey'
 import MockDate from 'mockdate'
+import { mockAddSurveyParams, mockAddSurveyRepository } from '@/application/test'
+import { AddSurveyRepository } from './add-survey-protocols'
+import { AddSurvey } from './add-survey'
 
 interface sutTypes {
   sut: AddSurvey
   addSurveyRepositoryStub: AddSurveyRepository
 }
 
-const makeFakeSurveyData = (): AddSurveyRepositoryParams => ({
-  question: 'any_question',
-  answers: [{
-    image: 'any_image',
-    answer: 'any_answer'
-  }],
-  date: new Date()
-})
-
-const makeAddSurveyRepositoryStub = (): AddSurveyRepository => {
-  class AddSurveyRepositoryStub implements AddSurveyRepository {
-    async add (surveyData: AddSurveyRepositoryParams): Promise<void> {
-      return await new Promise(resolve => resolve())
-    }
-  }
-  return new AddSurveyRepositoryStub()
-}
-
 const makeSut = (): sutTypes => {
-  const addSurveyRepositoryStub = makeAddSurveyRepositoryStub()
+  const addSurveyRepositoryStub = mockAddSurveyRepository()
   const sut = new AddSurvey(addSurveyRepositoryStub)
   return {
     sut,
@@ -46,8 +29,8 @@ describe('AddSurvey Usecase', () => {
   test('Should call repository AddSurveyRepository with correct values', async () => {
     const { sut, addSurveyRepositoryStub } = makeSut()
     const addSpy = jest.spyOn(addSurveyRepositoryStub, 'add')
-    await sut.add(makeFakeSurveyData())
-    expect(addSpy).toHaveBeenCalledWith(makeFakeSurveyData())
+    await sut.add(mockAddSurveyParams())
+    expect(addSpy).toHaveBeenCalledWith(mockAddSurveyParams())
   })
 
   test('Should throw if AddSurveyRepository throws', async () => {
@@ -55,7 +38,7 @@ describe('AddSurvey Usecase', () => {
     jest.spyOn(addSurveyRepositoryStub, 'add').mockImplementation(async () => {
       throw new Error()
     })
-    const promise = sut.add(makeFakeSurveyData())
+    const promise = sut.add(mockAddSurveyParams())
     await expect(promise).rejects.toThrow()
   })
 })

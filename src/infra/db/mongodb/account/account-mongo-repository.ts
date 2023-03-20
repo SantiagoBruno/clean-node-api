@@ -1,10 +1,10 @@
+import { ObjectId } from 'mongodb'
 import { MongoHelper } from '@/infra/db/mongodb/helpers/mongo-helpers'
 import { AddAccountRepository, AddAccountRepositoryParams } from '@/application/protocols/repository/account/add-account-repository'
 import { LoadAccountByEmailRepository } from '@/application/protocols/repository/account/load-account-by-email-repository'
 import { UpdateAccessTokenRepository } from '@/application/protocols/repository/account/update-access-token-repository'
 import { LoadAccountByTokenRepository } from '@/application/protocols/repository/account/load-account-by-token-repository'
 import { AccountModel } from '@/domain/models/account'
-import { ObjectId } from 'mongodb'
 
 export class AccountMongoRepository implements
   AddAccountRepository,

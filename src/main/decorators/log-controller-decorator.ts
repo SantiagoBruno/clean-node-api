@@ -1,4 +1,3 @@
-
 import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
 import { LogErrorRepository } from '@/application/protocols/repository/log/log-error-repository'
 

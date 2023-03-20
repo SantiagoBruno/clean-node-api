@@ -1,11 +1,12 @@
 import { ok, badRequest, serverError, unauthorized } from '@/presentation/helpers/http/http-helper'
 import { MissingParamError, ServerError } from '@/presentation/errors'
+import { mockValidation } from '@/validation/test'
+import { mockAuthentication } from '@/application/test'
 import { LoginController } from './login-controller'
 import {
   HttpRequest,
   HttpResponse,
   AuthenticationInterface,
-  AuthenticationInterfaceParams,
   Validation
 } from './login-controller-protocols'
 
@@ -15,29 +16,9 @@ interface sutTypes {
   validationStub: Validation
 }
 
-const makeAuthentication = (): AuthenticationInterface => {
-  class AuthenticationStub implements AuthenticationInterface {
-    async auth (authentication: AuthenticationInterfaceParams): Promise<string> {
-      return await new Promise(resolve => resolve('any_token'))
-    }
-  }
-  const authenticationStub = new AuthenticationStub()
-  return authenticationStub
-}
-
-const makeValidation = (): Validation => {
-  class ValidationStub implements Validation {
-    validate (input: any): Error | null {
-      return null
-    }
-  }
-  const validationStub = new ValidationStub()
-  return validationStub
-}
-
 const makeSut = (): sutTypes => {
-  const authenticationStub = makeAuthentication()
-  const validationStub = makeValidation()
+  const authenticationStub = mockAuthentication()
+  const validationStub = mockValidation()
   const sut = new LoginController(authenticationStub, validationStub)
   return {
     sut,

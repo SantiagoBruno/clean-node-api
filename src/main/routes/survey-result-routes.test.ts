@@ -1,27 +1,13 @@
 import request from 'supertest'
-import app from '../config/app'
-import env from '../config/env'
 import { Collection } from 'mongodb'
-import { MongoHelper } from '@/infra/db/mongodb/helpers/mongo-helpers'
 import { sign } from 'jsonwebtoken'
-import { AddSurveyInterfaceParams } from '@/application/usecases/survey/add-survey/add-survey-interface'
+import app from '@/main/config/app'
+import env from '@/main/config/env'
+import { MongoHelper } from '@/infra/db/mongodb/helpers/mongo-helpers'
+import { mockSurveyModel } from '@/domain/test/mock-survey'
 
 let surveyCollection: Collection
 let accountCollection: Collection
-
-const makeFakeSurvey = (): AddSurveyInterfaceParams => ({
-  question: 'any_question',
-  answers: [
-    {
-      image: 'any_image',
-      answer: 'any_answer_1'
-    },
-    {
-      answer: 'any_answer_2'
-    }
-  ],
-  date: new Date()
-})
 
 describe('Login Routes', () => {
   beforeAll(async () => {
@@ -69,7 +55,7 @@ describe('Login Routes', () => {
     })
 
     test('Should return 200 on save survey result with valid accessToken', async () => {
-      const res = await surveyCollection.insertOne(makeFakeSurvey())
+      const res = await surveyCollection.insertOne(mockSurveyModel())
       const surveyId = res.insertedId.toString()
       const accessToken = await makeAccessToken()
 
@@ -77,7 +63,7 @@ describe('Login Routes', () => {
         .put(`/api/surveys/${surveyId}/results`)
         .set('x-access-token', accessToken)
         .send({
-          answer: 'any_answer_1'
+          answer: 'any_answer_01'
         })
         .expect(200)
     })

@@ -1,5 +1,5 @@
+import { MongoHelper } from '@/infra/db/mongodb/helpers/mongo-helpers'
 import { SaveSurveyResultRepository, SaveSurveyResultRepositoryParams, SurveyResultModel } from '@/application/usecases/survey-result/save-survey-result/save-survey-result-protocols'
-import { MongoHelper } from '../helpers/mongo-helpers'
 
 export class SurveyResultMongoRepository implements SaveSurveyResultRepository {
   async save (data: SaveSurveyResultRepositoryParams): Promise<SurveyResultModel> {

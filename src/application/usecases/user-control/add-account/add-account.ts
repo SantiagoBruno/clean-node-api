@@ -2,10 +2,9 @@ import {
   AccountModel,
   Hasher,
   AddAccountRepository,
-  AddAccountRepositoryParams,
   LoadAccountByEmailRepository
 } from './add-account-protocols'
-import { AddAccountInteface } from './add-account-interface'
+import { AddAccountInteface, AddAccountParams } from './add-account-interface'
 
 export class AddAccount implements AddAccountInteface {
   constructor (
@@ -14,7 +13,7 @@ export class AddAccount implements AddAccountInteface {
     private readonly loadAcountByEmailRepository: LoadAccountByEmailRepository
   ) {}
 
-  async add (accountData: AddAccountRepositoryParams): Promise<AccountModel | null> {
+  async add (accountData: AddAccountParams): Promise<AccountModel | null> {
     const accountLoaded = await this.loadAcountByEmailRepository.loadByEmail(accountData.email)
     if (!accountLoaded) {
       const hashedPassword = await this.hasher.hash(accountData.password)
