@@ -8,7 +8,7 @@ export const mockAuthenticationParams = (): AuthenticationParams => ({
 export const mockAuthentication = (): AuthenticationInterface => {
   class AuthenticationStub implements AuthenticationInterface {
     async auth (authentication: AuthenticationParams): Promise<string> {
-      return await new Promise(resolve => resolve('any_token'))
+      return await Promise.resolve('any_token')
     }
   }
   const authenticationStub = new AuthenticationStub()

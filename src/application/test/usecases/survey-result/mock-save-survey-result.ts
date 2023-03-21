@@ -15,7 +15,7 @@ export const mockSaveSurveyResultParams = (): SaveSurveyResultParams => ({
 export const mockSaveSurveyResult = (): SaveSurveyResultInterface => {
   class SaveSurveyResultStub implements SaveSurveyResultInterface {
     async save (data: SaveSurveyResultParams): Promise<SurveyResultModel> {
-      return await new Promise(resolve => resolve(mockSurveyResultModel()))
+      return await Promise.resolve(mockSurveyResultModel())
     }
   }
 

@@ -11,7 +11,7 @@ export const mockAddAccountParams = (): AddAccountParams => ({
 export const MockAddAccount = (): AddAccountInteface => {
   class AddAccountStub implements AddAccountInteface {
     async add (account: AddAccountParams): Promise<AccountModel> {
-      return await new Promise(resolve => resolve(mockAccountModel()))
+      return await Promise.resolve(mockAccountModel())
     }
   }
   const addAccountStub = new AddAccountStub()

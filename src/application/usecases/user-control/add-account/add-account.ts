@@ -19,7 +19,7 @@ export class AddAccount implements AddAccountInteface {
       const hashedPassword = await this.hasher.hash(accountData.password)
       const account = { ...accountData, password: hashedPassword }
       const accountReturned = this.addAccountRepository.add(account)
-      return await new Promise(resolve => resolve(accountReturned))
+      return await Promise.resolve(accountReturned)
     } else {
       return null
     }

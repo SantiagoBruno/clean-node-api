@@ -17,10 +17,10 @@ const mockResponse = httpMocks.createResponse()
 const makeControllerStub = (): Controller => {
   class ControllerStub implements Controller {
     async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-      return await new Promise(resolve => resolve({
+      return await Promise.resolve({
         statusCode: 200,
         body: httpRequest.body
-      }))
+      })
     }
   }
   return new ControllerStub()
@@ -50,13 +50,13 @@ describe('adptRoute', () => {
   test('Should return httpResponse with error status code and error message on error', async () => {
     const controller = makeControllerStub()
     const sut = adptRoute(controller)
-    jest.spyOn(controller, 'handle').mockReturnValueOnce(new Promise(resolve => resolve({
+    jest.spyOn(controller, 'handle').mockReturnValueOnce(Promise.resolve({
       statusCode: 500,
       body: {
         param: 'any_param',
         message: 'any_error'
       }
-    })))
+    }))
     await sut(mockRequest, mockResponse)
     expect(mockResponse.statusCode).toBe(500)
   })

@@ -17,14 +17,14 @@ export class AccountMongoRepository implements
     const id = result.insertedId
     const account = await accountCollection.findOne({ _id: id })
     const mappedAccount = MongoHelper.mapMongoDbObject(account)
-    return await new Promise(resolve => resolve(mappedAccount))
+    return await Promise.resolve(mappedAccount)
   }
 
   async loadByEmail (email: string): Promise<AccountModel> {
     const accountCollection = await MongoHelper.getCollection('accounts')
     const account = await accountCollection.findOne({ email })
     const mappedAccount = MongoHelper.mapMongoDbObject(account)
-    return await new Promise(resolve => resolve(mappedAccount))
+    return await Promise.resolve(mappedAccount)
   }
 
   async updateAccessToken (id: string, token: string): Promise<void> {
@@ -50,6 +50,6 @@ export class AccountMongoRepository implements
       }]
     })
     const mappedAccount = MongoHelper.mapMongoDbObject(account)
-    return await new Promise(resolve => resolve(mappedAccount))
+    return await Promise.resolve(mappedAccount)
   }
 }

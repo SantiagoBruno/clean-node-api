@@ -15,12 +15,12 @@ const mockNextFunction = (): any => {}
 const makeMiddlewareStub = (): Middleware => {
   class MiddlewareStub implements Middleware {
     async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
-      return await new Promise(resolve => resolve({
+      return await Promise.resolve({
         statusCode: 200,
         body: {
           accountId: 'any_id'
         }
-      }))
+      })
     }
   }
   return new MiddlewareStub()
@@ -48,13 +48,13 @@ describe('adptRoute', () => {
   test('Should return httpResponse with error status code', async () => {
     const middleware = makeMiddlewareStub()
     const sut = adptMiddleware(middleware)
-    jest.spyOn(middleware, 'handle').mockReturnValueOnce(new Promise(resolve => resolve({
+    jest.spyOn(middleware, 'handle').mockReturnValueOnce(Promise.resolve({
       statusCode: 500,
       body: {
         param: 'any_param',
         message: 'any_error'
       }
-    })))
+    }))
     await sut(mockRequest, mockResponse, mockNextFunction)
     expect(mockResponse.statusCode).toBe(500)
   })

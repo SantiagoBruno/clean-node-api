@@ -20,7 +20,7 @@ export const mockAddSurveyParams = (): AddSurveyParams => ({
 export const mockAddSurvey = (): AddSurveyInterface => {
   class AddSurveyStub implements AddSurveyInterface {
     async add (data: AddSurveyParams): Promise<void> {
-      return await new Promise(resolve => resolve())
+      return await Promise.resolve()
     }
   }
   return new AddSurveyStub()
