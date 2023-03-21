@@ -1,11 +1,10 @@
 import {
   mockAddAccountRepository,
-  mockLoadAccountByEmailRepositoryNull,
+  mockLoadAccountByEmailRepository,
   mockAddAccountParams,
   mockHasher
 } from '@/application/test'
 import { mockAccountModel } from '@/domain/test'
-
 import { AddAccount } from './add-account'
 import {
   Hasher,
@@ -23,7 +22,8 @@ interface SutTypes {
 const makeSut = (): SutTypes => {
   const hasherStub = mockHasher()
   const addAccountRepositoryStub = mockAddAccountRepository()
-  const loadAcountByEmailRepositoryStub = mockLoadAccountByEmailRepositoryNull()
+  const loadAcountByEmailRepositoryStub = mockLoadAccountByEmailRepository()
+  jest.spyOn(loadAcountByEmailRepositoryStub, 'loadByEmail').mockReturnValue(new Promise(resolve => resolve(null)))
   const sut = new AddAccount(hasherStub, addAccountRepositoryStub, loadAcountByEmailRepositoryStub)
   return {
     sut,
